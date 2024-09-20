@@ -1,12 +1,36 @@
-@media (max-width: 768px) {
-    .social-icons i {
-        font-size: 1.5rem;
-    }
+body {
+    font-family: 'Poppins';
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+p {
+    font-weight: 400;
+}
+
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    padding: 10px;
 }
 
 .jumbotron {
+    padding: 20px 0;
     padding-top: 6rem;
     background-color: #e2edff;
+}
+
+.profile-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
 }
 
 .btn-transparent {
@@ -84,4 +108,22 @@ section {
 
 #contact {
     background-color: #e2edff;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+}
+
+.social-icons i {
+    font-size: 1.5rem;
 }
