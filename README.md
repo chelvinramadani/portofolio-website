@@ -14,6 +14,6 @@ Selamat datang di repository portofolio saya! 🚀 Website ini menampilkan infor
 - Font Awesome (untuk ikon sosial media)
 
 ## 🌍 Live Preview
-[🔗 Lihat](https://chelvinramadani.github.io/portfolio/)
+[🔗 Lihat](https://chelvinramadani.github.io/portofolio-website/)
 
 Terima kasih telah mengunjungi repository ini! ⭐ Jangan lupa memberikan bintang jika suka! 😃
