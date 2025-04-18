@@ -260,7 +260,7 @@ section {
 }
 
 .social-icons i {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #333333;
   border: 2px solid #dddddd;
   border-radius: 12px;
@@ -271,13 +271,15 @@ section {
 }
 
 .social-icons i:hover {
-  background-color: #007bff;
+  background-color: #e0e0e0;
   color: #ffffff;
   transform: rotate(10deg) scale(1.1);
 }
 
 #contact {
   background-color: #f8f9fa;
+  padding-top: 150px;
+  padding-bottom: 150px;
   color: #000000;
 }
 
