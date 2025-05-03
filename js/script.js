@@ -1,108 +1,115 @@
-AOS.init();
-
-document.addEventListener("DOMContentLoaded", function () {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  function setActiveLink() {
-    let currentSection = "";
-
-    // Tentukan section aktif berdasarkan scroll posisi
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 70; // Sesuaikan dengan tinggi navbar
-      if (window.scrollY >= sectionTop) {
-        currentSection = section.getAttribute("id");
-      }
-    });
-
-    // Tambahkan kelas 'active' ke menu yang sesuai
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(currentSection)) {
-        link.classList.add("active");
-      }
-    });
-  }
-
-  // Jalankan fungsi saat scroll
-  window.addEventListener("scroll", setActiveLink);
+/* ==== Smooth‑scroll opsional (hilangkan jika tak perlu) ==== */
+document.querySelectorAll('.nav-link[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const targetID = link.getAttribute("href").substring(1);
+    const targetEl = document.getElementById(targetID);
+    if (targetEl) {
+      e.preventDefault();
+      targetEl.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 });
 
-var typed = new Typed("#changing-text", {
-  strings: ["Mahasiswa", "Content Creator"],
-  typeSpeed: 50,
-  backSpeed: 50,
-  backDelay: 1000,
-  loop: true,
+/* ==== Highlight nav sesuai section terlihat ==== */
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+const sections = Array.from(navLinks)
+  .map((link) => {
+    const id = link.getAttribute("href").slice(1);
+    return document.getElementById(id);
+  })
+  .filter(Boolean);
+
+const observerOptions = {
+  root: null,
+  rootMargin: "-70px 0px 0px 0px", // kompensasi sticky header
+  threshold: 0.2,
+};
+
+function onIntersect(entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+      });
+    }
+  });
+}
+
+const observer = new IntersectionObserver(onIntersect, observerOptions);
+sections.forEach((section) => observer.observe(section));
+
+/* ===== Type‑writer ===== */
+document.addEventListener("DOMContentLoaded", function () {
+  var typed = new Typed("#dynamic-title", {
+    strings: ["Mahasiswa", "Web Developer", "Content Creator"], // ganti sesuai keinginanmu
+    typeSpeed: 50,
+    backSpeed: 25,
+    backDelay: 2000,
+    loop: true,
+    showCursor: true,
+    cursorChar: "|",
+  });
 });
 
 const projects = [
   {
     title: "Link Ku",
-    image: "image/linkku.png",
     description: "Website linktree sederhana",
     fullDescription:
       "Link Ku adalah website sederhana seperti Linktree, untuk menampilkan berbagai tautan dalam satu halaman.",
+    image: "image/linkku.png",
     link: "https://chelvinramadani.github.io/my-link/",
-    tools: ["html", "css", "javascript"],
-  },
-  {
-    title: "Kalkulator UTBK",
-    image: "image/utbk.png",
-    description: "Menghitung rata-rata nilai UTBK",
-    fullDescription:
-      "Kalkulator UTBK membantu kamu menghitung nilai rata-rata ujian masuk PTN secara cepat.",
-    link: "https://chelvinramadani.github.io/penghitung-rata-rata-UTBK/",
-    tools: ["html", "css", "javascript"],
+    tech: ["html", "css", "javascript"],
   },
   {
     title: "TO DO LIST",
-    image: "image/todolist.png",
     description: "To Do List sederhana untuk manajemen tugas",
     fullDescription:
-      "Aplikasi ini memudahkan kamu mencatat dan mengatur aktivitas harian secara efisien.",
+      "Aplikasi web untuk membantu mencatat dan mengatur aktivitas harian secara efisien.",
+    image: "image/todolist.png",
     link: "https://github.com/chelvinramadani/To-Do-List-App",
-    tools: ["html", "css", "bootstrap", "javascript"],
+    tech: ["html", "css", "bootstrap", "javascript"],
   },
   {
     title: "Simple Landing Page",
-    image: "image/landingpage.png",
-    description: "Landing page untuk proyek PIBITI 2023",
+    description: "Landing page Toko Wayang Kulit",
     fullDescription:
-      "Landing page ini dibuat untuk mempresentasikan kegiatan proyek PIBITI tahun 2023.",
+      "Landing page ini dikembangkan untuk memenuhi tugas project PIBITI 2023.",
+    image: "image/landingpage.png",
     link: "https://chelvinramadani.github.io/Pibiti-2023-Project/",
-    tools: ["html", "css", "bootstrap", "javascript"],
+    tech: ["html", "css", "bootstrap", "javascript"],
   },
   {
     title: "WebCafe",
-    image: "image/webcafe.png",
-    description: "Aplikasi kasir untuk cafe",
+    description: "Aplikasi kasir untuk cafe berbasis web",
     fullDescription:
       "WebCafe adalah sistem kasir berbasis web untuk cafe, dengan fitur tambah pesanan dan total harga otomatis.",
-    link: "https://github.com/chelvinramadani/Webcafe",
-    tools: ["bootstrap", "php"],
+    image: "image/webcafe.png",
+    link: "https://github.com/chelvinramadani/To-Do-List-App",
+    tech: ["bootstrap", "php", "sql"],
   },
   {
     title: "Cashed",
-    image: "image/cashed.png",
-    description: "Aplikasi kasir penjualan untuk PIBITI 2024",
+    description: "Aplikasi kasir penjualan berbasis web",
     fullDescription:
-      "Cashed adalah sistem kasir berbasis Laravel dengan fitur lengkap, dikembangkan untuk project PIBITI 2024.",
+      "Cashed adalah sistem kasir berbasis Laravel dengan fitur lengkap, dikembangkan untuk memenuhi tugas project PIBITI 2024.",
+    image: "image/cashed.png",
     link: "https://github.com/chelvinramadani/Cashed",
-    tools: ["bootstrap", "php", "laravel"],
+    tech: ["bootstrap", "laravel"],
+  },
+  {
+    title: "Multi Page Landing Page",
+    description: "Website landing page Kayoo",
+    fullDescription:
+      "Website landing page Kayoo UMKM produksi kaligrafi dan hiasan dinding",
+    image: "image/kayoo.png",
+    link: "https://kayoo.chelvinramadani.com/",
+    tech: ["html", "css", "bootstrap", "php"],
   },
 ];
 
-const iconBaseURL = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
-const cardContainer = document.getElementById("projectCards");
-
-const modal = document.getElementById("projectModal");
-const modalImage = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDesc");
-const modalTools = document.getElementById("modalTools");
-const modalClose = document.querySelector(".modal-close");
-
+// Function generate icons dari tech list
 function generateIcons(tools) {
   const icons = {
     html: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -114,153 +121,141 @@ function generateIcons(tools) {
     php: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
     laravel:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+    sql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
   };
 
   return tools
     .map((tool) => {
       const iconUrl = icons[tool.toLowerCase()];
-      if (!iconUrl) return "";
-      return `<img src="${iconUrl}" alt="${tool}" width="30" height="30">`;
+      if (iconUrl) {
+        return `<img src="${iconUrl}" class="tech-icon" alt="${tool}" title="${tool}">`;
+      }
+      return "";
     })
     .join("");
 }
 
-projects.forEach((project, index) => {
-  const techIcons = project.tools
+// Function render card project
+function renderProjects() {
+  const projectCards = document.getElementById("projectCards");
+  projectCards.innerHTML = projects
     .map(
-      (tool) =>
-        `<img src="${
-          iconBaseURL + tool
-        }/${tool}-original.svg" alt="${tool}" width="30" height="30">`
+      (p, index) => `
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 custom-card text-white border-0">
+            <div class="card-body d-flex flex-column">
+              <img src="${p.image}" class="img-fluid rounded mb-3" alt="${p.title}" style="height: 200px; object-fit: cover;">
+
+              <h5 class="card-title">${p.title}</h5>
+              <p class="card-text text-muted-white">${p.description}</p>
+
+              <div class="d-flex justify-content-center mt-auto">
+                <button class="btn btn-outline-light mt-3" onclick="showProject(${index})">
+                  Lihat Selengkapnya
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> 
+      `
     )
     .join("");
+}
 
-  const delay = 200 + (index % 3) * 200;
+// Function untuk show modal project
+function showProject(index) {
+  const p = projects[index];
 
-  const card = document.createElement("div");
-  card.className = "col-md-4 mb-3";
-  card.innerHTML = `
-        <div class="card" data-aos="zoom-in" data-aos-duration="2000" data-aos-delay="${delay}">
-          <img src="${project.image}" class="card-img-top" alt="${
-    project.title
-  }">
-          <div class="card-body text-center">
-            <h5 class="card-title">${project.title}</h5>
-            <p class="card-text">${project.description}</p>
-            <button class="btn btn-dark btn-detail mt-2"
-              data-title="${project.title}"
-              data-image="${project.image}"
-              data-description="${project.fullDescription}"
-              data-tools="${project.tools.join(", ")}"
-              data-link="${project.link}">
-              Lihat Selengkapnya
-            </button>
-          </div>
-        </div>
-      `;
+  document.getElementById("modalImage").src = p.image;
+  document.getElementById("modalImage").alt = p.title;
+  document.getElementById("modalTitle").textContent = p.title;
+  document.getElementById("modalDesc").textContent = p.fullDescription;
+  document.getElementById("modalLink").href = p.link;
+  document.getElementById("modalTech").innerHTML = generateIcons(p.tech);
 
-  cardContainer.appendChild(card);
-});
+  const modal = new bootstrap.Modal(document.getElementById("projectModal"));
+  modal.show();
+}
 
-// Event: Modal buka
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("btn-detail")) {
-    modalImage.src = e.target.getAttribute("data-image");
-    modalTitle.textContent = e.target.getAttribute("data-title");
-    modalDesc.textContent = e.target.getAttribute("data-description");
-    const toolsArray = e.target
-      .getAttribute("data-tools")
-      .split(",")
-      .map((t) => t.trim());
-    modalTools.innerHTML = generateIcons(toolsArray);
-    document.getElementById("modalVisitBtn").href =
-      e.target.getAttribute("data-link");
-    modal.style.display = "flex";
-  }
-});
-
-// Event: Modal tutup
-modalClose.addEventListener("click", () => (modal.style.display = "none"));
-window.addEventListener("click", (e) => {
-  if (e.target === modal) modal.style.display = "none";
-});
+// Jalankan saat halaman sudah siap
+document.addEventListener("DOMContentLoaded", renderProjects);
 
 const certifications = [
   {
-    title: "Pelatihan Bidang Teknologi Informasi 2023",
-    image: "image/Sertifikat PIBITI23.png",
-    description: `Sertifikat peserta pelatihan yang diadakan oleh HIMATIFA UPN Veteran Jawa Timur untuk membangun website interaktif menggunakan Bootstrap & Javascript.`,
-    issued: "Desember 2023",
+    title: "PIBITI 2023",
+    fullDescription:
+      "Sertifikat peserta pelatihan yang diadakan oleh HIMATIFA UPN Veteran Jawa Timur untuk membangun website interaktif menggunakan Bootstrap & Javascript.",
+    image: "image/pibiti23.png",
+    date: "Desember 2023",
   },
   {
-    title: "Pelatihan Bidang Teknologi Informasi 2024",
+    title: "PIBITI 2024",
+    fullDescription:
+      "Sertifikat peserta pelatihan yang diadakan oleh HIMATIFA UPN Veteran Jawa Timur untuk membangun website menggunakan Framework Laravel bagi pemula.",
     image: "image/pibiti24.png",
-    description: `Sertifikat peserta pelatihan yang diadakan oleh HIMATIFA UPN Veteran Jawa Timur untuk membangun website menggunakan Framework Laravel bagi pemula.`,
-    issued: "Agustus 2024",
+    date: "Agustus 2024",
+  },
+  {
+    title: "Belajar Frontend Web untuk pemula",
+    fullDescription:
+      "Sertifikat kelas Dicoding Belajar Membuat Frontend Website untuk pemula.",
+    image: "image/dicodingfrontend.png",
+    date: "28 September 2024",
   },
   {
     title: "Belajar Dasar Pemrograman Web",
+    fullDescription:
+      "Sertifikat kelas Dicoding yang ditujukan untuk seorang yang ingin mengembangkan kemampuan dasar pengembangan website.",
     image: "image/dicodingpemweb.png",
-    description: `Sertifikat kelas Dicoding yang ditujukan untuk seorang yang ingin mengembangkan kemampuan dasar pengembangan website.`,
-    issued: "September 2024",
-  },
-  {
-    title: "Belajar Membuat Frontend Web untuk pemula",
-    image: "image/dicodingfrontend.png",
-    description: `Sertifikat kelas Dicoding Belajar Membuat Frontend Website untuk pemula.`,
-    issued: "September 2024",
+    date: "22 September 2024",
   },
   {
     title: "Belajar Dasar AI",
+    fullDescription: "Sertifikat kelas Dicoding Belajar Dasar AI.",
     image: "image/dicodingAI.png",
-    description: `Sertifikat kelas Dicoding Belajar Dasar AI.`,
-    issued: "Oktober 2024",
+    date: "16 Oktober 2024",
   },
-  // Tambahkan lebih banyak sertifikat jika perlu
 ];
 
-const certificationContainer = document.getElementById("certificationCards");
+function renderCertifications() {
+  const certificationCards = document.getElementById("certificationCards");
+  certificationCards.innerHTML = certifications
+    .map(
+      (cert, index) => `
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 custom-card text-white border-0">
+            <div class="card-body d-flex flex-column">
+              <img src="${cert.image}" class="img-fluid rounded mb-3" alt="${cert.title}" style="height: 200px; object-fit: cover;">
 
-certifications.forEach((cert, index) => {
-  const col = document.createElement("div");
-  col.className = "col-md-4 mb-3";
-  col.innerHTML = `
-      <div class="card" data-aos="fade-up" data-aos-delay="${index * 200}">
-        <img src="${cert.image}" class="card-img-top" alt="${cert.title}" />
-        <div class="card-body text-center">
-          <h5 class="card-title">${cert.title}</h5>
-          <p class="text-muted">Issued: ${cert.issued}</p>
-          <button class="btn btn-dark btn-cert-detail mt-2"
-            data-title="${cert.title}"
-            data-image="${cert.image}"
-            data-description="${cert.description}">
-            Lihat Selengkapnya
-          </button>
+              <h5 class="card-title">${cert.title}</h5>
+              <p class="text-muted-white mt-3">
+                <small>Dikeluarkan pada: ${cert.date}</small>
+              </p>
+
+              <div class="d-flex justify-content-center mt-auto">
+                <button class="btn btn-outline-light mt-3" onclick="showCertification(${index})">
+                  Lihat Selengkapnya
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    `;
-  certificationContainer.appendChild(col);
-});
+       `
+    )
+    .join("");
+}
 
-// Gunakan modal yang sama
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("btn-cert-detail")) {
-    const img = e.target.getAttribute("data-image");
-    const title = e.target.getAttribute("data-title");
-    const desc = e.target.getAttribute("data-description");
+function showCertification(index) {
+  const cert = certifications[index];
+  document.getElementById("certificationModalTitle").innerText = cert.title;
+  document.getElementById("certificationModalBody").innerHTML = `
+    <img src="${cert.image}" alt="${cert.title}" class="img-fluid mb-4" style="max-height: 400px; object-fit: contain;">
+    <p>${cert.fullDescription}</p>
+  `;
+  const certificationModal = new bootstrap.Modal(
+    document.getElementById("certificationModal")
+  );
+  certificationModal.show();
+}
 
-    modalImage.src = img;
-    modalTitle.textContent = title;
-    modalDesc.textContent = desc;
-    modalTools.innerHTML = ""; // Kosongkan bagian tools karena bukan project
-    modalVisitBtn.style.display = "none"; // Sembunyikan tombol Visit
-    modal.style.display = "flex";
-  }
-});
-
-// Tampilkan kembali tombol Visit saat modal digunakan untuk project
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("btn-detail")) {
-    modalVisitBtn.style.display = "inline-block";
-  }
-});
+renderCertifications();
