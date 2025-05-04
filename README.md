@@ -4,7 +4,7 @@ Selamat datang di repository portofolio saya! 🚀 Website ini menampilkan infor
 
 ## ✨ Fitur Utama
 
-- **Desain Tampilan** – Menggunakan desain gaya tampilan ala ala Github
+- **Desain Tampilan Web** – Menggunakan desain gaya tampilan ala ala Github
 - **Desain Responsif** – Menggunakan Bootstrap 5.3 agar tampilan nyaman di berbagai perangkat
 - **Animasi & Efek Interaktif** – Menggunakan Javascript untuk typing text & navbar
 - **Gallery Project** – Menampilkan berbagai proyek yang telah saya kerjakan
