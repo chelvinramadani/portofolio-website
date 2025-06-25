@@ -81,12 +81,12 @@ const projects = [
     tech: ["html", "css", "bootstrap", "javascript"],
   },
   {
-    title: "WebCafe",
-    description: "Aplikasi kasir untuk cafe berbasis web",
+    title: "WebKasir",
+    description: "Aplikasi kasir untuk warung prasmanan berbasis web",
     fullDescription:
-      "WebCafe adalah sistem kasir berbasis web untuk cafe, dengan fitur tambah pesanan dan total harga otomatis.",
-    image: "image/webcafe.png",
-    link: "https://github.com/chelvinramadani/To-Do-List-App",
+      "Webkasir adalah sistem kasir berbasis web untuk warung prasmanan, dilengkapi dengan fitur login, tambah pesanan, dan total harga otomatis.",
+    image: "image/websitekasir.png",
+    link: "https://github.com/chelvinramadani/katalog_produk",
     tech: ["bootstrap", "php", "sql"],
   },
   {
@@ -107,6 +107,23 @@ const projects = [
     link: "https://kayoo.chelvinramadani.com/",
     tech: ["html", "css", "bootstrap", "php"],
   },
+  {
+    title: "Cleanify",
+    description: "Desain UI/UX Aplikasi Cleanify",
+    fullDescription:
+      "Desain UI/UX aplikasi penyedia jasa layanan kebersihan Cleanify merupakan hasil final project mata kuliah Desain Antarmuka",
+    image: "image/cleanify.png",
+    link: "https://www.figma.com/proto/BsP6Y76fgF09l2rmLBEg9Y/Cleanify?node-id=78-592&p=f&t=1SslHTknhTNQNrQW-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=78%3A592",
+    tech: ["figma"],
+  },
+  {
+    title: "Aplikasi Pemesanan Kost",
+    description: "Wireframe Aplikasi Pemesanan Kost",
+    fullDescription: "Wireframe Lofi aplikasi pemesanan kost",
+    image: "image/wireframekost.png",
+    link: "https://www.figma.com/design/Qe06dIs463zAgz8GhKRmy9/Pesan-Kost?m=auto&t=1SslHTknhTNQNrQW-6",
+    tech: ["figma"],
+  },
 ];
 
 // Function generate icons dari tech list
@@ -122,6 +139,8 @@ function generateIcons(tools) {
     laravel:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
     sql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    figma:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
   };
 
   return tools
