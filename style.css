@@ -20,8 +20,8 @@ body {
 }
 
 .hero img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   border: 2px solid #58a6ff;
   margin-bottom: 1rem;
@@ -36,26 +36,36 @@ body {
   background: #2ea043;
 }
 
-#education ul li {
-  padding: 10px 0;
-  border-bottom: 1px solid #444; /* garis bawah lembut */
+.education-card {
+  background: rgba(255, 255, 255, 0.05); /* transparansi kaca */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* border lembut */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px); /* efek blur kaca */
+  -webkit-backdrop-filter: blur(12px); /* untuk Safari */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
-#education ul li:last-child {
-  border-bottom: none;
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
-  background-color: #4493f8; /* Warna biru Bootstrap */
-  border-radius: 50%;
-  flex-shrink: 0;
+.education-card h5 {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.education-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
 }
 
 .tech-card {
-  background: #0d1117;
-  border: 1px solid #3d444d;
+  background: rgba(255, 255, 255, 0.05); /* transparansi kaca */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* border lembut */
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   text-align: center;
