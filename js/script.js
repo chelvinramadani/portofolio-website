@@ -117,9 +117,9 @@ const projects = [
   },
   {
     title: "WebKasir",
-    description: "Aplikasi kasir warung prasmanan berbasis web",
+    description: "Aplikasi kasir rumah makan prasmanan berbasis web",
     fullDescription:
-      "Webkasir adalah sistem kasir berbasis web untuk warung prasmanan, dilengkapi dengan fitur login, tambah pesanan, dan total harga otomatis.",
+      "Webkasir adalah sistem kasir berbasis web untuk rumah makan prasmanan, dilengkapi dengan fitur login, tambah pesanan, dan total harga otomatis.",
     image: "image/websitekasir.png",
     link: "https://github.com/chelvinramadani/katalog_produk",
     tech: ["bootstrap", "php", "sql"],
