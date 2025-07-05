@@ -81,15 +81,6 @@ const projects = [
     tech: ["html", "css", "bootstrap", "javascript"],
   },
   {
-    title: "WebKasir",
-    description: "Aplikasi kasir untuk warung prasmanan berbasis web",
-    fullDescription:
-      "Webkasir adalah sistem kasir berbasis web untuk warung prasmanan, dilengkapi dengan fitur login, tambah pesanan, dan total harga otomatis.",
-    image: "image/websitekasir.png",
-    link: "https://github.com/chelvinramadani/katalog_produk",
-    tech: ["bootstrap", "php", "sql"],
-  },
-  {
     title: "Cashed",
     description: "Aplikasi kasir penjualan berbasis web",
     fullDescription:
@@ -99,10 +90,18 @@ const projects = [
     tech: ["bootstrap", "laravel"],
   },
   {
+    title: "Aplikasi Pemesanan Kost",
+    description: "Wireframe Aplikasi Pemesanan Kost",
+    fullDescription: "Wireframe Lofi aplikasi pemesanan kost",
+    image: "image/wireframekost.png",
+    link: "https://www.figma.com/design/Qe06dIs463zAgz8GhKRmy9/Pesan-Kost?m=auto&t=1SslHTknhTNQNrQW-6",
+    tech: ["figma"],
+  },
+  {
     title: "Multi Page Landing Page",
     description: "Website landing page Kayoo",
     fullDescription:
-      "Website landing page Kayoo UMKM produksi kaligrafi dan hiasan dinding",
+      "Website landing page Kayoo UMKM produksi aksesoris dan dekorasi rumah",
     image: "image/kayoo.png",
     link: "https://kayoo.chelvinramadani.com/",
     tech: ["html", "css", "bootstrap", "php"],
@@ -117,12 +116,13 @@ const projects = [
     tech: ["figma"],
   },
   {
-    title: "Aplikasi Pemesanan Kost",
-    description: "Wireframe Aplikasi Pemesanan Kost",
-    fullDescription: "Wireframe Lofi aplikasi pemesanan kost",
-    image: "image/wireframekost.png",
-    link: "https://www.figma.com/design/Qe06dIs463zAgz8GhKRmy9/Pesan-Kost?m=auto&t=1SslHTknhTNQNrQW-6",
-    tech: ["figma"],
+    title: "WebKasir",
+    description: "Aplikasi kasir warung prasmanan berbasis web",
+    fullDescription:
+      "Webkasir adalah sistem kasir berbasis web untuk warung prasmanan, dilengkapi dengan fitur login, tambah pesanan, dan total harga otomatis.",
+    image: "image/websitekasir.png",
+    link: "https://github.com/chelvinramadani/katalog_produk",
+    tech: ["bootstrap", "php", "sql"],
   },
 ];
 
